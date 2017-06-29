@@ -41,3 +41,21 @@ class MessageManager():
 
     def delete_message(self, id):
         del self.messages[id]
+
+
+# create a message_fields dictionary to control the data that we want
+# Flask_RESTful to render in our response, when we return MessageModel instances
+message_fields = {
+    'id': fields.Integer,
+    'uri': fields.Url('message_endpoint'),
+    'message': fields.String,
+    'duration': fields.Integer,
+    'creation_date': fields.DateTime,
+    'message_category': fields.String,
+    'printed_times': fields.Integer,
+    'printed_once': fields.Boolean
+}
+
+# create an instance of the previously created MessageManager class.
+# We use this instance to create, retrieve, and delete MessageModel instances.
+message_manager = MessageManager()
