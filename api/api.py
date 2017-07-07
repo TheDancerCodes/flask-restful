@@ -130,3 +130,12 @@ class MessageList(Resource):
         )
         message_manager.insert_message(message)
         return message, status.HTTP_201_CREATED
+
+
+# Create the main entry point for the application,
+# Initialize it with a Flask application and
+# Configure the resource routing for the api.
+app = Flask(__name__)
+api = Api(app)
+api.add_resource(MessageList, '/api/messages')
+api.add_resource(Message, '/api/messages/<int:id>', endpoint='message_endpoint')
