@@ -117,7 +117,7 @@ class MessageList(Resource):
 
     @marshal_with(message_fields)
     def post(self):
-        parser = request.RequestParser()
+        parser = reqparse.RequestParser()
         parser.add_argument('message', type=str, required=True, help='Message cannot be blank!')
         parser.add_argument('duration', type=int, required=True, help='Duration cannot be blank!')
         parser.add_argument('message_category', type=str, required=True, help='Message category cannot be blank!')
@@ -137,7 +137,7 @@ class MessageList(Resource):
 # Configure the resource routing for the api.
 app = Flask(__name__)
 api = Api(app)
-api.add_resource(MessageList, '/api/messages')
+api.add_resource(MessageList, '/api/messages/')
 api.add_resource(Message, '/api/messages/<int:id>', endpoint='message_endpoint')
 
 if __name__ == '__main__':
