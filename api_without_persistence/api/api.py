@@ -19,7 +19,7 @@ self.messages dictionary.
 
 """
 
-from flask import Flask
+from flask import Flask, jsonify
 from flask_restful import abort, Api, fields, marshal_with, reqparse, Resource
 from datetime import datetime
 from models import MessageModel
